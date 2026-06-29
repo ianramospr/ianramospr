@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ian Ramos — Designer & Developer</title>
+  <meta name="description" content="Ian Ramos (@ianramospr) — a designer and developer crafting thoughtful digital experiences." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" aria-label="Site navigation">
+    <span class="nav__logo">ian ramos</span>
+    <a href="mailto:hello@ianramos.dev" class="nav__cta" id="nav-cta">Say hello ↗</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <p class="hero__eyebrow reveal">Based in Puerto Rico</p>
+    <h1 class="hero__heading" id="hero-heading">
+      <span class="reveal">Crafting things</span>
+      <span class="reveal delay-1"><em>people love</em></span>
+      <span class="reveal delay-2">to use.</span>
+    </h1>
+    <p class="hero__sub reveal delay-3">
+      I design and build digital products — clean, focused, intentional.
+    </p>
+    <div class="hero__scroll reveal delay-4" aria-hidden="true">
+      <span class="hero__scroll-line"></span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about" aria-labelledby="about-heading">
+    <div class="section__label reveal">About</div>
+    <div class="about__body">
+      <h2 class="about__heading reveal" id="about-heading">
+        I believe the best products are the ones that feel <em>inevitable</em>.
+      </h2>
+      <p class="about__text reveal delay-1">
+        Hey, I'm Ian — a multi-disciplinary designer and developer who loves the intersection of form and function. I obsess over details others overlook, and I build with care from the first pixel to the last line of code.
+      </p>
+      <p class="about__text reveal delay-2">
+        When I'm not shipping products, I'm exploring typography, writing notes on design, or making coffee go cold thinking about ideas.
+      </p>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="section work" aria-labelledby="work-heading">
+    <div class="section__label reveal">Selected work</div>
+    <h2 class="sr-only" id="work-heading">Selected work</h2>
+    <div class="work__grid">
+      <article class="card reveal" id="card-1">
+        <div class="card__tag">Mobile · iOS</div>
+        <h3 class="card__title">Akii</h3>
+        <p class="card__desc">A mindful journaling app built around how people actually reflect — fast, private, and beautifully simple.</p>
+        <span class="card__year">2025</span>
+      </article>
+      <article class="card reveal delay-1" id="card-2">
+        <div class="card__tag">Branding · Web</div>
+        <h3 class="card__title">Cafrerias</h3>
+        <p class="card__desc">Brand identity and digital presence for a Puerto Rican coffee concept rooted in community and craft.</p>
+        <span class="card__year">2025</span>
+      </article>
+      <article class="card reveal delay-2" id="card-3">
+        <div class="card__tag">Product · Design</div>
+        <h3 class="card__title">Design systems</h3>
+        <p class="card__desc">Building scalable, token-driven design systems that bridge design and engineering without friction.</p>
+        <span class="card__year">Ongoing</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section class="section stack" aria-labelledby="stack-heading">
+    <div class="section__label reveal">Tools & craft</div>
+    <h2 class="sr-only" id="stack-heading">Tools and craft</h2>
+    <ul class="stack__list" role="list">
+      <li class="stack__item reveal">Figma</li>
+      <li class="stack__item reveal delay-1">Swift / SwiftUI</li>
+      <li class="stack__item reveal delay-2">HTML · CSS · JS</li>
+      <li class="stack__item reveal delay-3">Typography</li>
+      <li class="stack__item reveal delay-4">Motion design</li>
+      <li class="stack__item reveal delay-5">Brand identity</li>
+    </ul>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" aria-labelledby="contact-heading">
+    <div class="section__label reveal">Let's talk</div>
+    <div class="contact__body">
+      <h2 class="contact__heading reveal" id="contact-heading">
+        Have something in mind?<br/><em>Let's make it real.</em>
+      </h2>
+      <a href="mailto:hello@ianramos.dev" class="contact__link reveal delay-1" id="contact-email">
+        hello@ianramos.dev
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M4 16L16 4M16 4H8M16 4V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span>© 2025 Ian Ramos</span>
+    <div class="footer__links">
+      <a href="https://twitter.com/ianramospr" target="_blank" rel="noopener noreferrer" id="footer-twitter">Twitter</a>
+      <a href="https://github.com/ianramospr" target="_blank" rel="noopener noreferrer" id="footer-github">GitHub</a>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
