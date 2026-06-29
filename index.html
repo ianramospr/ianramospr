@@ -14,8 +14,10 @@
 
   <!-- NAV -->
   <nav class="nav" aria-label="Site navigation">
-    <span class="nav__logo">ian ramos</span>
-    <a href="mailto:hello@ianramos.dev" class="nav__cta" id="nav-cta">Say hello ↗</a>
+    <a href="#hero-heading" class="nav__logo" aria-label="Ian Ramos home">
+      <img src="IAN.svg" alt="Ian Ramos" width="515" height="200" />
+    </a>
+    <a href="mailto:hello@ianramospr.com" class="nav__cta" id="nav-cta">Say hello ↗</a>
   </nav>
 
   <!-- HERO -->
@@ -34,60 +36,13 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="section about" aria-labelledby="about-heading">
-    <div class="section__label reveal">About</div>
-    <div class="about__body">
-      <h2 class="about__heading reveal" id="about-heading">
-        I believe the best products are the ones that feel <em>inevitable</em>.
+  <!-- PRINCIPLE -->
+  <section class="section principle" aria-labelledby="principle-heading">
+    <div class="principle__body">
+      <h2 class="principle__heading reveal" id="principle-heading">
+        Make it clear.<br/><em>Make it feel inevitable.</em>
       </h2>
-      <p class="about__text reveal delay-1">
-        Hey, I'm Ian — a multi-disciplinary designer and developer who loves the intersection of form and function. I obsess over details others overlook, and I build with care from the first pixel to the last line of code.
-      </p>
-      <p class="about__text reveal delay-2">
-        When I'm not shipping products, I'm exploring typography, writing notes on design, or making coffee go cold thinking about ideas.
-      </p>
     </div>
-  </section>
-
-  <!-- WORK -->
-  <section class="section work" aria-labelledby="work-heading">
-    <div class="section__label reveal">Selected work</div>
-    <h2 class="sr-only" id="work-heading">Selected work</h2>
-    <div class="work__grid">
-      <article class="card reveal" id="card-1">
-        <div class="card__tag">Mobile · iOS</div>
-        <h3 class="card__title">Akii</h3>
-        <p class="card__desc">A mindful journaling app built around how people actually reflect — fast, private, and beautifully simple.</p>
-        <span class="card__year">2025</span>
-      </article>
-      <article class="card reveal delay-1" id="card-2">
-        <div class="card__tag">Branding · Web</div>
-        <h3 class="card__title">Cafrerias</h3>
-        <p class="card__desc">Brand identity and digital presence for a Puerto Rican coffee concept rooted in community and craft.</p>
-        <span class="card__year">2025</span>
-      </article>
-      <article class="card reveal delay-2" id="card-3">
-        <div class="card__tag">Product · Design</div>
-        <h3 class="card__title">Design systems</h3>
-        <p class="card__desc">Building scalable, token-driven design systems that bridge design and engineering without friction.</p>
-        <span class="card__year">Ongoing</span>
-      </article>
-    </div>
-  </section>
-
-  <!-- STACK -->
-  <section class="section stack" aria-labelledby="stack-heading">
-    <div class="section__label reveal">Tools & craft</div>
-    <h2 class="sr-only" id="stack-heading">Tools and craft</h2>
-    <ul class="stack__list" role="list">
-      <li class="stack__item reveal">Figma</li>
-      <li class="stack__item reveal delay-1">Swift / SwiftUI</li>
-      <li class="stack__item reveal delay-2">HTML · CSS · JS</li>
-      <li class="stack__item reveal delay-3">Typography</li>
-      <li class="stack__item reveal delay-4">Motion design</li>
-      <li class="stack__item reveal delay-5">Brand identity</li>
-    </ul>
   </section>
 
   <!-- CONTACT -->
@@ -97,8 +52,8 @@
       <h2 class="contact__heading reveal" id="contact-heading">
         Have something in mind?<br/><em>Let's make it real.</em>
       </h2>
-      <a href="mailto:hello@ianramos.dev" class="contact__link reveal delay-1" id="contact-email">
-        hello@ianramos.dev
+      <a href="mailto:hello@ianramospr.com" class="contact__link reveal delay-1" id="contact-email">
+        hello@ianramospr.com
         <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
           <path d="M4 16L16 4M16 4H8M16 4V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -108,10 +63,16 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <span>© 2025 Ian Ramos</span>
-    <div class="footer__links">
-      <a href="https://twitter.com/ianramospr" target="_blank" rel="noopener noreferrer" id="footer-twitter">Twitter</a>
-      <a href="https://github.com/ianramospr" target="_blank" rel="noopener noreferrer" id="footer-github">GitHub</a>
+    <div class="footer__links" aria-label="Social links">
+      <a href="https://instagram.com/ianramospr" target="_blank" rel="noopener noreferrer" id="footer-instagram" aria-label="Instagram">
+        <img src="instagram.svg" alt="" width="24" height="24" />
+      </a>
+      <a href="https://threads.net/@ianramospr" target="_blank" rel="noopener noreferrer" id="footer-threads" aria-label="Threads">
+        <img src="threads.svg" alt="" width="24" height="24" />
+      </a>
+      <a href="https://github.com/ianramospr" target="_blank" rel="noopener noreferrer" id="footer-github" aria-label="GitHub">
+        <img src="github.svg" alt="" width="24" height="24" />
+      </a>
     </div>
   </footer>
 
