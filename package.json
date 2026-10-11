@@ -1,0 +1,11 @@
+{
+  "name": "ianramospr-websites",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build:portfolio": "node scripts/build.mjs portfolio",
+    "build:chao": "node scripts/build.mjs chao",
+    "test": "node --test"
+  }
+}
