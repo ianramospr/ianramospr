@@ -39,5 +39,5 @@ delivery, or App Store acceptance; complete the deployment checklist for those.
 To add another application, create `apps/<slug>/public/index.html`, its own
 assets and policy/support pages, then run `node scripts/build.mjs <slug>`.
 Create a separate Pages project with output `dist/<slug>` and add only its
-subdomain. Add a project entry to the portfolio using the existing project styles.
+subdomain. Application listings are not included on the personal website.
 No portfolio relocation or shared application framework is needed.

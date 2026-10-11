@@ -95,8 +95,8 @@ uploads the repository root, narrow the artifact to:
 | Environment variable | `NODE_VERSION=24` |
 
 This artifact preserves the existing HTML, JS, CSS, manifest and `Assets` paths.
-It adds the Chao project listing while excluding application sources, tests, and
-documentation from the personal domain. Preview it before promoting it. No DNS
+It excludes application sources, tests, and documentation from the personal
+domain. Application listings are not included on the portfolio. Preview it before promoting it. No DNS
 change is needed. If the project already uses an equivalent isolated build,
 preserve that configuration and include the updated portfolio files.
 

@@ -25,7 +25,7 @@ test('portfolio artifact preserves existing assets and contains only deployable 
     assert.deepEqual(await readFile(resolve(root, 'dist/portfolio/Assets', file)),
       await readFile(resolve(root, 'Assets', file)));
   }
-  assert.match(await read('dist/portfolio/index.html'), /href="https:\/\/chao\.ianramospr\.com"/);
+  assert.doesNotMatch(await read('dist/portfolio/index.html'), /projects-heading|https:\/\/chao\.ianramospr\.com/);
 });
 
 test('Chao routes are separate HTML documents with working local links and anchors', async () => {
