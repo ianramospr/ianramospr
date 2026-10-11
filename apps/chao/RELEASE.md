@@ -12,9 +12,24 @@ The adjacent Chao app repository was inspected read-only on October 11, 2026:
 `Chao/Views/BrutalistTheme.swift`, and the color asset catalogs. These describe
 swipe-right keep, swipe-left queue, queue review, and iOS-confirmed deletion.
 The copied `Chao-Light.svg` wordmark is stored locally as `public/assets/chao.svg`;
-the website uses the app's cream/near-black/red palette, square borders and
-system monospace type. The landscape is a CSS illustration, not a screenshot.
-No dependency on that adjacent checkout is needed for builds or deployment.
+only its transparent canvas is trimmed (viewBox); the original artwork paths remain
+unchanged. The website uses the app's exact light Display P3 palette (with sRGB
+fallbacks), system monospace headings, square controls, and onboarding copy.
+
+The landing page's Photos / Swipe / Queue selector shows real SwiftUI simulator
+captures from `/private/tmp/ChaoRenameScreenshots/Chao-{main,keep,queue}.png`,
+exported by the app's screenshot UI tests. These are Debug demo-mode screens with
+sample photos, labeled as such on the site. Local JPEG derivatives are resized to
+1200 pixels tall at quality 72; no interface content is altered. The captures
+match the current deck, swipe-feedback, and queue layout. Replace them when the
+app interface changes. The selector uses native radios: Tab enters the group,
+arrow keys change the selected screen. No scripts, accounts, remote fonts,
+analytics, or additional build dependencies are introduced.
+
+Run `node --test apps/chao/tests/*.test.mjs` for source checks and `npm test` for
+the repository build/routing/security checks. Browser QA should cover 320px,
+390px, 768px, and desktop widths, keyboard screen selection, and all legal/support
+routes. No dependency on the adjacent app checkout is needed for deployment.
 
 ## Privacy information to confirm
 

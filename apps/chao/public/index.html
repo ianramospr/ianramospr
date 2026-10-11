@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chao — Sort your camera roll</title>
+  <title>Chao — Your photos. Your call.</title>
   <meta name="description" content="An iPhone app for reviewing photos one at a time. Keep favorites, queue unwanted shots, and review before confirming deletion." />
   
   <link rel="canonical" href="https://chao.ianramospr.com/" />
-  <meta property="og:title" content="Chao — Sort your camera roll" />
+  <meta property="og:title" content="Chao — Your photos. Your call." />
   <meta property="og:description" content="An iPhone app for reviewing photos one at a time. Keep favorites, queue unwanted shots, and review before confirming deletion." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://chao.ianramospr.com/" />
@@ -21,39 +21,53 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header shell">
-    <a class="wordmark" href="/" aria-label="Chao home"><img src="/assets/chao.svg" alt="Chao" width="1024" height="1024" /></a>
-    <nav aria-label="Main navigation"><a href="/" aria-current="page">Home</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a></nav>
+    <a class="wordmark" href="/" aria-label="Chao home"><img src="/assets/chao.svg" alt="Chao" width="870" height="510" /></a>
+    <span class="platform">FOR IPHONE</span>
   </header>
   <main id="main" class="shell">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow">Photo review / iPhone</p>
-        <h1 id="hero-title">Less clutter.<br />More keepers.</h1>
-        <p class="intro">Say chao to the photos you don’t need. Review your camera roll one photo at a time, with a simple swipe.</p>
-        <a class="button" href="#how-it-works">Meet Chao <span aria-hidden="true">↓</span></a>
-      </div>
-      <figure class="swipe-example">
-        <div class="example-canvas" aria-hidden="true">
-          <div class="photo-card"><div class="illustration"><span class="sun"></span><span class="hill hill-back"></span><span class="hill hill-front"></span></div><span class="photo-label">THE ONE WORTH KEEPING.</span><span class="stamp">KEEP!</span></div>
-          <div class="swipe-labels"><span>← QUEUE</span><span>KEEP →</span></div>
+        <p class="eyebrow">SORT YOUR CAMERA ROLL.</p>
+        <h1 id="hero-title">YOUR PHOTOS.<br />YOUR CALL<span class="accent">.</span></h1>
+        <p class="intro">One photo at a time. Keep what matters.<br class="desktop-break" /> Say chao to the rest.</p>
+        <div class="swipe-directions" aria-label="Swipe directions">
+          <p><span class="direction accent" aria-hidden="true">←</span><span>LEFT TO QUEUE</span></p>
+          <p><span class="direction" aria-hidden="true">→</span><span>RIGHT TO KEEP</span></p>
         </div>
-        <figcaption>A swipe illustration. Your photos, your decisions.</figcaption>
-      </figure>
+        <p class="review-note">Changed your mind? Undo a swipe.<br />Review your queue before you delete. iOS asks you to confirm.</p>
+        <p class="app-signoff">NO ACCOUNTS. JUST YOUR PHOTOS.</p>
+      </div>
+      <div class="app-preview">
+        <fieldset class="screen-picker">
+          <legend class="visually-hidden">Explore Chao’s app screens</legend>
+          <input class="visually-hidden" type="radio" name="screen" id="screen-photos" checked />
+          <label for="screen-photos">PHOTOS</label>
+          <input class="visually-hidden" type="radio" name="screen" id="screen-swipe" />
+          <label for="screen-swipe">SWIPE</label>
+          <input class="visually-hidden" type="radio" name="screen" id="screen-queue" />
+          <label for="screen-queue">QUEUE</label>
+          <div class="screens">
+            <figure class="screen screen-photos">
+              <img src="/assets/screens/photos.jpg" width="552" height="1200" alt="Chao’s photo deck: a desert road photo, Undo, a library count, and the red Queue button." fetchpriority="high" />
+              <figcaption>YOUR PHOTOS, ONE AT A TIME.</figcaption>
+            </figure>
+            <figure class="screen screen-swipe">
+              <img src="/assets/screens/swipe.jpg" width="552" height="1200" alt="A right swipe moves the photo aside with Chao’s KEEP! stamp." loading="lazy" />
+              <figcaption>THE GOOD ONES STAY.</figcaption>
+            </figure>
+            <figure class="screen screen-queue">
+              <img src="/assets/screens/queue.jpg" width="552" height="1200" alt="Chao’s review queue: nine sample photos and a Delete 9 Photos button. Deletion requires iOS confirmation." loading="lazy" />
+              <figcaption>ONE LAST LOOK. THEN CHAO.</figcaption>
+            </figure>
+          </div>
+        </fieldset>
+        <p class="preview-note">From the app. Sample photos.</p>
+      </div>
     </section>
-    <section class="workflow" id="how-it-works" aria-labelledby="workflow-title">
-      <p class="eyebrow">A little less in your camera roll.</p>
-      <h2 id="workflow-title">Swipe. Review. Chao.</h2>
-      <ol class="steps">
-        <li><span class="step-number">01</span><h3>Keep the good ones.</h3><p>Swipe right to keep a photo. Swipe left to add it to your review queue.</p></li>
-        <li><span class="step-number">02</span><h3>Take another look.</h3><p>Open the queue and review your choices. Keep anything you’ve changed your mind about.</p></li>
-        <li><span class="step-number">03</span><h3>You get the final say.</h3><p>Request deletion when you’re ready. iOS asks you to confirm before photos are deleted.</p></li>
-      </ol>
-    </section>
-    <section class="closing" aria-labelledby="closing-title"><div><p class="eyebrow">Made for a simpler review.</p><h2 id="closing-title">Your camera roll.<br />Your call.</h2></div><a class="button button-outline" href="/support">Get in touch <span aria-hidden="true">↗</span></a></section>
-</main>
+  </main>
   <footer class="site-footer shell">
-    <p>Created by <a href="https://ianramospr.com">Ian Ramos</a></p>
-    <nav aria-label="Footer navigation"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a></nav>
+    <p>Made by <a href="https://ianramospr.com">Ian Ramos</a></p>
+    <nav aria-label="Footer navigation"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support <span aria-hidden="true">↗</span></a></nav>
   </footer>
 </body>
 </html>
