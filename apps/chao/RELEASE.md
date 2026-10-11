@@ -16,20 +16,16 @@ only its transparent canvas is trimmed (viewBox); the original artwork paths rem
 unchanged. The website uses the app's exact light Display P3 palette (with sRGB
 fallbacks), system monospace headings, square controls, and onboarding copy.
 
-The landing page's Photos / Swipe / Queue selector shows real SwiftUI simulator
-captures from `/private/tmp/ChaoRenameScreenshots/Chao-{main,keep,queue}.png`,
-exported by the app's screenshot UI tests. These are Debug demo-mode screens with
-sample photos, labeled as such on the site. Local JPEG derivatives are resized to
-1200 pixels tall at quality 72; no interface content is altered. The captures
-match the current deck, swipe-feedback, and queue layout. Replace them when the
-app interface changes. The selector uses native radios: Tab enters the group,
-arrow keys change the selected screen. No scripts, accounts, remote fonts,
-analytics, or additional build dependencies are introduced.
+The landing page is a single text composition with two static SVG swipe arrows
+and a red brush underline copied from the app's `SplashUnderline` artwork. The
+underline's transparent canvas is trimmed for web placement; its paths are
+unchanged. No screenshots, preview selector, client scripts, remote fonts, or
+additional dependencies are included.
 
 Run `node --test apps/chao/tests/*.test.mjs` for source checks and `npm test` for
 the repository build/routing/security checks. Browser QA should cover 320px,
-390px, 768px, and desktop widths, keyboard screen selection, and all legal/support
-routes. No dependency on the adjacent app checkout is needed for deployment.
+390px, 768px, and desktop widths and all legal/support routes. No dependency on
+the adjacent app checkout is needed for deployment.
 
 ## Privacy information to confirm
 

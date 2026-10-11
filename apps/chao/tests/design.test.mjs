@@ -6,25 +6,16 @@ const publicRoot = new URL('../public/', import.meta.url);
 /** Read a deployable source file without running the repository build. @param {string} path */
 const read = (path) => readFile(new URL(path, publicRoot), 'utf8');
 
-test('app preview uses a native mutually exclusive radio group with complete local assets', async () => {
+test('landing stays static and all decorative vectors resolve locally', async () => {
   const html = await read('index.html');
-  const ids = [...html.matchAll(/type="radio" name="screen" id="([^"]+)"( checked)?/g)];
-  assert.equal(ids.length, 3);
-  assert.equal(ids.filter(([, , checked]) => checked).length, 1);
-  for (const [, id] of ids) assert.ok(html.includes(`for="${id}"`));
-  assert.match(html, /<legend[^>]*>Explore Chao/);
-  const images = [...html.matchAll(/src="(\/assets\/screens\/[^"]+)" width="(\d+)" height="(\d+)" alt="([^"]+)"/g)];
-  assert.equal(images.length, 3);
-  let total = 0;
-  for (const [, path, width, height, alt] of images) {
-    assert.ok(Number(width) > 0 && Number(height) > 0 && alt.length > 30);
-    const bytes = await readFile(new URL(path.slice(1), publicRoot));
-    assert.equal(bytes.readUInt16BE(0), 0xffd8, 'must be a real JPEG');
-    total += bytes.length;
+  assert.doesNotMatch(html, /<fieldset|<input|assets\/screens|\.jpe?g|screen-picker/);
+  for (const path of ['assets/arrow-left.svg', 'assets/arrow-right.svg', 'assets/underline.svg']) {
+    const svg = await read(path);
+    assert.match(svg, /<svg[^>]+viewBox=/);
+    assert.doesNotMatch(svg, /<script|<foreignObject|https?:\/\/(?!www.w3.org)/);
   }
-  assert.ok(total < 450_000, 'all three app screens must fit in 450 KB');
-  assert.match(html, /From the app\. Sample photos\./);
-  assert.match(html, /iOS asks you to confirm/);
+  assert.match(html, /Swipe left to queue a photo\. Swipe right to keep it\./);
+  assert.doesNotMatch(html, /review-note|app-signoff|LEFT TO QUEUE|RIGHT TO KEEP/);
 });
 
 test('all existing App Store routes retain accessible local navigation and policy status', async () => {
@@ -59,6 +50,8 @@ test('website keeps original app artwork and script-free security protections', 
   const weight = (await stat(new URL('index.html', publicRoot))).size
     + (await stat(new URL('style.css', publicRoot))).size
     + (await stat(new URL('assets/chao.svg', publicRoot))).size
-    + (await stat(new URL('assets/screens/photos.jpg', publicRoot))).size;
-  assert.ok(weight < 250_000, 'initial landing assets must fit in 250 KB');
+    + (await stat(new URL('assets/underline.svg', publicRoot))).size
+    + (await stat(new URL('assets/arrow-left.svg', publicRoot))).size
+    + (await stat(new URL('assets/arrow-right.svg', publicRoot))).size;
+  assert.ok(weight < 125_000, 'landing assets must fit in 125 KB');
 });

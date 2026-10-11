@@ -18,7 +18,7 @@
   <link rel="manifest" href="/assets/favicon/site.webmanifest" />
   <link rel="stylesheet" href="/style.css" />
 </head>
-<body>
+<body class="landing">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header shell">
     <a class="wordmark" href="/" aria-label="Chao home"><img src="/assets/chao.svg" alt="Chao" width="870" height="510" /></a>
@@ -28,40 +28,14 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow">SORT YOUR CAMERA ROLL.</p>
-        <h1 id="hero-title">YOUR PHOTOS.<br />YOUR CALL<span class="accent">.</span></h1>
-        <p class="intro">One photo at a time. Keep what matters.<br class="desktop-break" /> Say chao to the rest.</p>
-        <div class="swipe-directions" aria-label="Swipe directions">
-          <p><span class="direction accent" aria-hidden="true">←</span><span>LEFT TO QUEUE</span></p>
-          <p><span class="direction" aria-hidden="true">→</span><span>RIGHT TO KEEP</span></p>
-        </div>
-        <p class="review-note">Changed your mind? Undo a swipe.<br />Review your queue before you delete. iOS asks you to confirm.</p>
-        <p class="app-signoff">NO ACCOUNTS. JUST YOUR PHOTOS.</p>
+        <h1 id="hero-title">YOUR PHOTOS.<br /><span class="marked">YOUR CALL.</span></h1>
       </div>
-      <div class="app-preview">
-        <fieldset class="screen-picker">
-          <legend class="visually-hidden">Explore Chao’s app screens</legend>
-          <input class="visually-hidden" type="radio" name="screen" id="screen-photos" checked />
-          <label for="screen-photos">PHOTOS</label>
-          <input class="visually-hidden" type="radio" name="screen" id="screen-swipe" />
-          <label for="screen-swipe">SWIPE</label>
-          <input class="visually-hidden" type="radio" name="screen" id="screen-queue" />
-          <label for="screen-queue">QUEUE</label>
-          <div class="screens">
-            <figure class="screen screen-photos">
-              <img src="/assets/screens/photos.jpg" width="552" height="1200" alt="Chao’s photo deck: a desert road photo, Undo, a library count, and the red Queue button." fetchpriority="high" />
-              <figcaption>YOUR PHOTOS, ONE AT A TIME.</figcaption>
-            </figure>
-            <figure class="screen screen-swipe">
-              <img src="/assets/screens/swipe.jpg" width="552" height="1200" alt="A right swipe moves the photo aside with Chao’s KEEP! stamp." loading="lazy" />
-              <figcaption>THE GOOD ONES STAY.</figcaption>
-            </figure>
-            <figure class="screen screen-queue">
-              <img src="/assets/screens/queue.jpg" width="552" height="1200" alt="Chao’s review queue: nine sample photos and a Delete 9 Photos button. Deletion requires iOS confirmation." loading="lazy" />
-              <figcaption>ONE LAST LOOK. THEN CHAO.</figcaption>
-            </figure>
-          </div>
-        </fieldset>
-        <p class="preview-note">From the app. Sample photos.</p>
+      <div class="hero-bottom">
+        <p class="intro">One photo at a time. Keep what matters.<br class="desktop-break" /> Say chao to the rest.</p>
+        <div class="swipe-directions" role="img" aria-label="Swipe left to queue a photo. Swipe right to keep it.">
+          <p class="chao-direction" aria-hidden="true"><span>CHAO!</span><img class="direction" src="/assets/arrow-left.svg" alt="" width="140" height="52" /></p>
+          <p aria-hidden="true"><span>KEEP!</span><img class="direction" src="/assets/arrow-right.svg" alt="" width="140" height="52" /></p>
+        </div>
       </div>
     </section>
   </main>
