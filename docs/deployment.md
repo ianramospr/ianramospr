@@ -6,8 +6,36 @@ The owner confirmed that the portfolio is on Cloudflare Pages. Public inspection
 on October 11, 2026 found Cloudflare nameservers and an HTTPS 200 response for the
 personal site. The Git remote is `ianramospr/ianramospr`; this checkout previously
 contained only static files, with no deployment workflow, CNAME, or Pages settings.
-The existing Pages project name, production branch and dashboard settings have
-not been inspected. No deployment or DNS changes were performed.
+On October 11, 2026, the Cloudflare plugin confirmed the existing portfolio
+project is `ianramospr`, connected to GitHub `ianramospr/ianramospr` on `main`.
+Its build command, output directory and root directory are blank. Its existing
+deployment and DNS records were preserved during Chao setup.
+
+## Chao deployment configured
+
+The separate `chao-ianramospr` Pages project is now connected to the same GitHub
+repository and `main` branch, with automatic production and preview deployments.
+It uses build command `npm run build:chao`, output `dist/chao`, repository-root
+build execution, and `NODE_VERSION=24` for both environments. Analytics is disabled.
+
+- Default deployment URL: `https://chao-ianramospr.pages.dev`
+- Custom domain: `https://chao.ianramospr.com`
+- DNS: proxied CNAME `chao` → `chao-ianramospr.pages.dev`, TTL Auto.
+- Initial production commit: `481ec5caa1b1153510a42ce12384b699a7904336`.
+
+The initial deployment succeeded. Cloudflare reports the custom domain, DNS
+verification, and HTTPS validation as **Active**. Public resolvers 1.1.1.1 and
+8.8.8.8 resolve the hostname. Clients that cached the previous NXDOMAIN response
+may need to wait for that negative DNS cache to expire; the `pages.dev` URL is
+available in the meantime.
+
+All four pages and the stylesheet/logo returned
+200 over HTTPS when checked against the published DNS address; an unknown path
+returned 404. Security headers were present. Existing portfolio and mail records
+were preserved. Privacy and terms remain publication notices pending final content.
+
+The instructions below document the configuration for recovery and future apps;
+do not create a duplicate Chao project or DNS record.
 
 ## Deploy Chao independently
 
