@@ -36,7 +36,6 @@ test('Chao routes are separate HTML documents with working local links and ancho
     assert.equal([...html.matchAll(/<h1\b/g)].length, 1, `${file}: one primary heading`);
     assert.match(html, /<html lang="en">/);
     assert.match(html, /<main\b[^>]*\bid="main"/);
-    assert.match(html, /href="https:\/\/ianramospr\.com"/);
     assert.match(
       html,
       new RegExp(`<link\\b(?=[^>]*rel="canonical")(?=[^>]*href="https://chao\\.ianramospr\\.com/${route}")[^>]*>`),

@@ -9,12 +9,13 @@ const read = (path) => readFile(new URL(path, publicRoot), 'utf8');
 test('landing stays static and all decorative vectors resolve locally', async () => {
   const html = await read('index.html');
   assert.doesNotMatch(html, /<fieldset|<input|assets\/screens|\.jpe?g|screen-picker/);
-  for (const path of ['assets/arrow-left.svg', 'assets/arrow-right.svg', 'assets/underline.svg']) {
+  for (const path of ['assets/Chao-Arrow.svg', 'assets/Keep-Arrow.svg', 'assets/underline.svg']) {
     const svg = await read(path);
     assert.match(svg, /<svg[^>]+viewBox=/);
     assert.doesNotMatch(svg, /<script|<foreignObject|https?:\/\/(?!www.w3.org)/);
   }
-  assert.match(html, /Swipe left to queue a photo\. Swipe right to keep it\./);
+  assert.match(html, /Swipe left to queue a photo or right to keep it/);
+  assert.match(html, /assets\/photos\/san-francisco\.png/);
   assert.match(html, /href="\/download"><img alt="Download on the App Store"[^>]*src="\/assets\/app-store-black\.svg"/);
   assert.match(await read('assets/app-store-black.svg'), /Download_on_the_App_Store_Badge/);
   assert.doesNotMatch(html, /review-note|app-signoff|LEFT TO QUEUE|RIGHT TO KEEP/);
