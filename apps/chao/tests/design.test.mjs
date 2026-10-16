@@ -15,7 +15,8 @@ test('landing stays static and all decorative vectors resolve locally', async ()
     assert.doesNotMatch(svg, /<script|<foreignObject|https?:\/\/(?!www.w3.org)/);
   }
   assert.match(html, /Swipe left to queue a photo\. Swipe right to keep it\./);
-  assert.match(html, /href="\/download">Download on the App Store/);
+  assert.match(html, /href="\/download"><img alt="Download on the App Store"[^>]*src="\/assets\/app-store-black\.svg"/);
+  assert.match(await read('assets/app-store-black.svg'), /Download_on_the_App_Store_Badge/);
   assert.doesNotMatch(html, /review-note|app-signoff|LEFT TO QUEUE|RIGHT TO KEEP/);
 });
 
@@ -61,8 +62,9 @@ test('website keeps original app artwork and script-free security protections', 
   const weight = (await stat(new URL('index.html', publicRoot))).size
     + (await stat(new URL('style.css', publicRoot))).size
     + (await stat(new URL('assets/chao.svg', publicRoot))).size
+    + (await stat(new URL('assets/app-store-black.svg', publicRoot))).size
     + (await stat(new URL('assets/underline.svg', publicRoot))).size
     + (await stat(new URL('assets/arrow-left.svg', publicRoot))).size
     + (await stat(new URL('assets/arrow-right.svg', publicRoot))).size;
-  assert.ok(weight < 125_000, 'landing assets must fit in 125 KB');
+  assert.ok(weight < 140_000, 'landing assets must fit in 140 KB');
 });

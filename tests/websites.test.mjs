@@ -80,10 +80,10 @@ test('Chao artifact is isolated, script-free, and has security headers and a rea
   assert.match(headers, /X-Content-Type-Options: nosniff/);
   const css = await read('dist/chao/style.css');
   assert.doesNotMatch(css, /@import|url\(https?:/);
-  const weight = await Promise.all(['index.html', 'style.css', 'assets/chao.svg'].map(
+  const weight = await Promise.all(['index.html', 'style.css', 'assets/chao.svg', 'assets/app-store-black.svg'].map(
     async (file) => (await stat(resolve(root, 'dist/chao', file))).size,
   ));
-  assert.ok(weight.reduce((a, b) => a + b, 0) < 125_000, 'landing assets exceed 125 KB');
+  assert.ok(weight.reduce((a, b) => a + b, 0) < 140_000, 'landing assets exceed 140 KB');
 });
 
 test('invalid build targets fail without deleting valid output', async () => {
