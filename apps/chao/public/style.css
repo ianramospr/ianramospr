@@ -56,6 +56,49 @@ h1 { margin: 0; font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans
 .email { font-weight: 700; font-size: clamp(0.875rem, 3vw, 1.125rem); }
 .button { display: inline-flex; align-items: center; min-height: 52px; padding: 14px 20px; margin-top: 16px; border: 3px solid var(--ink); background: var(--ink); color: var(--paper); box-shadow: 4px 4px 0 var(--ink); font-weight: 700; font-size: 0.875rem; text-decoration: none; text-transform: uppercase; }
 .button:active { translate: 4px 4px; box-shadow: none; }
-@media (max-width: 740px) { .shell { width: calc(100% - 40px); } .site-header { padding-top: 42px; } .hero { padding-top: 58px; } h1 { font-size: clamp(3.35rem, 15.5vw, 5.25rem); line-height: 0.9; } .desktop-break { display: none; } .intro { max-width: 360px; } .photo-stack { height: min(580px, 116vw); margin-top: 58px; } .photo-left { left: 2%; } .photo-right { right: 2%; } .photo-main { width: 76%; left: 12%; } .photo-main figcaption { padding: 10px; } .swipe-directions { gap: 18px; } .site-footer { padding-bottom: 18px; } .site-footer nav { justify-content: space-between; gap: 12px; } .document { padding-block: 32px 64px; } .contact-panel { padding: 20px; } }
-@media (max-width: 380px) { .shell { width: calc(100% - 32px); } .photo-stack { height: 113vw; } .photo-main figcaption span { display: none; } .site-footer nav a { font-size: 0.77rem; } }
+@media (max-width: 740px) {
+  .shell { width: calc(100% - 32px); }
+  .site-header { padding-top: 24px; }
+  .wordmark { width: 92px; }
+  .hero { padding: 24px 0 18px; }
+  h1 { font-size: clamp(2.8rem, 13.4vw, 3.4rem); line-height: 0.9; }
+  .desktop-break { display: none; }
+  .hero-bottom { gap: 14px; margin-top: 18px; }
+  .intro { max-width: 340px; font-size: 1rem; line-height: 1.25; }
+  .app-store-badge img { width: 160px; }
+  .photo-stack { width: min(330px, 90vw); height: min(290px, 74vw); margin-top: 28px; }
+  .photo-left { left: 2%; }
+  .photo-right { right: 2%; }
+  .photo-main { width: 76%; left: 12%; }
+  .photo-main figcaption { min-height: 38px; padding: 6px 8px; font-size: 0.42rem; }
+  .photo-main strong { font-size: 0.85rem; }
+  .swipe-directions { width: min(330px, 100%); gap: 12px; margin-top: 4px; }
+  .swipe-choice { gap: 5px; font-size: 1.55rem; }
+  .direction-divider { height: 42px; }
+  .site-footer { padding-bottom: 18px; }
+  .site-footer nav { justify-content: space-between; gap: 12px; }
+  .document { padding-block: 32px 64px; }
+  .contact-panel { padding: 20px; }
+}
+@media (max-width: 380px) {
+  .shell { width: calc(100% - 32px); }
+  .photo-stack { height: 72vw; }
+  .photo-main figcaption span { display: none; }
+  .site-footer nav a { font-size: 0.77rem; }
+}
+@media (max-width: 740px) and (max-height: 700px) {
+  .site-header { padding-top: 16px; }
+  .wordmark { width: 78px; }
+  .hero { padding-top: 16px; }
+  h1 { font-size: clamp(2.35rem, 12vw, 2.8rem); }
+  .hero-bottom { gap: 10px; margin-top: 12px; }
+  .intro { max-width: 310px; font-size: 0.9rem; }
+  .app-store-badge img { width: 145px; }
+  .photo-stack { width: min(260px, 74vw); height: min(185px, 54vw); margin-top: 18px; }
+  .photo-main figcaption { min-height: 28px; padding: 4px 6px; font-size: 0.33rem; }
+  .photo-main strong { font-size: 0.63rem; }
+  .swipe-directions { width: min(260px, 100%); gap: 9px; margin-top: 0; }
+  .swipe-choice { gap: 3px; font-size: 1.25rem; }
+  .direction-divider { height: 34px; }
+}
 @media (forced-colors: active) { .marked::after { background: none; border-bottom: 3px solid CanvasText; } }
