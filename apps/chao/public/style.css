@@ -41,6 +41,8 @@ h1 { margin: 0; font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans
 .site-footer { border-top: 1px solid #6c6c6c; padding: 20px 0 24px; }
 .site-footer nav { display: flex; justify-content: space-around; gap: 24px; }
 .site-footer nav a { min-height: 44px; display: inline-flex; align-items: center; gap: 8px; font-size: clamp(0.88rem, 1.5vw, 1.05rem); text-decoration: none; }
+.creator-credit { display: flex; justify-content: center; width: max-content; margin: 8px auto 0; }
+.creator-credit img { width: 64px; }
 .site-footer nav a:hover, .site-footer nav a:focus-visible, a[aria-current="page"] { text-decoration: underline; }
 .document { max-width: 740px; padding-block: 64px 88px; }
 .document h1 { font-family: inherit; font-size: clamp(2.75rem, 6vw, 4rem); line-height: 1.04; letter-spacing: -0.07em; overflow-wrap: anywhere; }
@@ -76,6 +78,7 @@ h1 { margin: 0; font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans
   .direction-divider { height: 42px; }
   .site-footer { padding-bottom: 18px; }
   .site-footer nav { justify-content: space-between; gap: 12px; }
+  .creator-credit { margin-top: 4px; }
   .document { padding-block: 32px 64px; }
   .contact-panel { padding: 20px; }
 }
