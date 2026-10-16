@@ -29,7 +29,7 @@ h1 { margin: 0; font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans
 .photo-left { z-index: 1; width: 56%; height: 73%; left: 7%; top: 12%; rotate: -9deg; }
 .photo-right { z-index: 2; width: 56%; height: 72%; right: 6%; top: 12%; rotate: 9deg; }
 .photo-main { z-index: 3; display: grid; grid-template-rows: 1fr auto; width: 72%; height: 86%; left: 14%; top: 0; rotate: -3deg; }
-.photo-main img { min-height: 0; }
+.photo-main img { min-height: 0; filter: brightness(0.86) contrast(1.12) saturate(1.18); }
 .photo-main figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; min-height: clamp(54px, 8vw, 70px); padding: 12px clamp(10px, 2vw, 18px); background: var(--paper); font-size: clamp(0.52rem, 1.7vw, 0.8rem); letter-spacing: 0.08em; text-align: left; white-space: nowrap; }
 .photo-main strong { font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; font-size: clamp(1.1rem, 3vw, 1.75rem); letter-spacing: 0.01em; }
 .swipe-directions { display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: clamp(20px, 6vw, 86px); width: min(760px, 100%); margin-top: clamp(16px, 3vw, 32px); }
@@ -58,6 +58,4 @@ h1 { margin: 0; font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans
 .button:active { translate: 4px 4px; box-shadow: none; }
 @media (max-width: 740px) { .shell { width: calc(100% - 40px); } .site-header { padding-top: 42px; } .hero { padding-top: 58px; } h1 { font-size: clamp(3.35rem, 15.5vw, 5.25rem); line-height: 0.9; } .desktop-break { display: none; } .intro { max-width: 360px; } .photo-stack { height: min(580px, 116vw); margin-top: 58px; } .photo-left { left: 2%; } .photo-right { right: 2%; } .photo-main { width: 76%; left: 12%; } .photo-main figcaption { padding: 10px; } .swipe-directions { gap: 18px; } .site-footer { padding-bottom: 18px; } .site-footer nav { justify-content: space-between; gap: 12px; } .document { padding-block: 32px 64px; } .contact-panel { padding: 20px; } }
 @media (max-width: 380px) { .shell { width: calc(100% - 32px); } .photo-stack { height: 113vw; } .photo-main figcaption span { display: none; } .site-footer nav a { font-size: 0.77rem; } }
-@media (prefers-reduced-motion: no-preference) { .photo-main { animation: settle 650ms cubic-bezier(.2,.8,.2,1) both; } }
-@keyframes settle { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
 @media (forced-colors: active) { .marked::after { background: none; border-bottom: 3px solid CanvasText; } }
