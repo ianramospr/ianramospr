@@ -15,6 +15,7 @@ test('landing stays static and all decorative vectors resolve locally', async ()
     assert.doesNotMatch(svg, /<script|<foreignObject|https?:\/\/(?!www.w3.org)/);
   }
   assert.match(html, /Swipe left to queue a photo or right to keep it/);
+  assert.doesNotMatch(html, /<span>CHAO<\/span>|<span>KEEP<\/span>/);
   assert.match(html, /assets\/photos\/san-francisco\.png/);
   assert.match(html, /href="\/download"><img alt="Download on the App Store"[^>]*src="\/assets\/app-store-black\.svg"/);
   assert.match(await read('assets/app-store-black.svg'), /Download_on_the_App_Store_Badge/);
