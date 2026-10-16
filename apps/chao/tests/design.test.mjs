@@ -15,10 +15,17 @@ test('landing stays static and all decorative vectors resolve locally', async ()
     assert.doesNotMatch(svg, /<script|<foreignObject|https?:\/\/(?!www.w3.org)/);
   }
   assert.match(html, /Swipe left to queue a photo\. Swipe right to keep it\./);
+  assert.match(html, /href="\/download">Download on the App Store/);
   assert.doesNotMatch(html, /review-note|app-signoff|LEFT TO QUEUE|RIGHT TO KEEP/);
 });
 
+test('download route redirects to the confirmed App Store product page', async () => {
+  const redirects = await read('_redirects');
+  assert.match(redirects, /^\/download https:\/\/apple\.co\/4ytNjAW 302$/m);
+});
+
 test('all existing App Store routes retain accessible local navigation and policy status', async () => {
+  const redirects = await read('_redirects');
   for (const name of ['index', 'privacy', 'terms', 'support', '404']) {
     const html = await read(`${name}.html`);
     assert.equal([...html.matchAll(/<h1\b/g)].length, 1);
@@ -26,14 +33,18 @@ test('all existing App Store routes retain accessible local navigation and polic
     for (const [, value] of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
       if (value.startsWith('#')) assert.ok(html.includes(`id="${value.slice(1)}"`));
       if (!value.startsWith('/')) continue;
+      if (value === '/download') {
+        assert.match(redirects, /^\/download https:\/\/apple\.co\/4ytNjAW 302$/m);
+        continue;
+      }
       const path = value === '/' ? 'index.html' : value.includes('.') ? value.slice(1) : `${value.slice(1)}.html`;
       assert.ok((await stat(new URL(path, publicRoot))).isFile(), `${name}: ${value}`);
     }
   }
   for (const route of ['privacy', 'terms']) {
     const html = await read(`${route}.html`);
-    assert.match(html, /pending publication/i);
-    assert.match(html, /name="robots" content="noindex"/);
+    assert.match(html, /Effective October 11, 2026/i);
+    assert.doesNotMatch(html, /name="robots" content="noindex"/);
   }
 });
 

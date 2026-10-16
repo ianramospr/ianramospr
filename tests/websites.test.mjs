@@ -29,19 +29,27 @@ test('portfolio artifact preserves existing assets and contains only deployable 
 });
 
 test('Chao routes are separate HTML documents with working local links and anchors', async () => {
+  const redirects = await read('dist/chao/_redirects');
   for (const route of ['', 'privacy', 'terms', 'support', '404']) {
     const file = `${route || 'index'}.html`;
     const html = await read(`dist/chao/${file}`);
     assert.equal([...html.matchAll(/<h1\b/g)].length, 1, `${file}: one primary heading`);
     assert.match(html, /<html lang="en">/);
-    assert.match(html, /<main id="main"/);
+    assert.match(html, /<main\b[^>]*\bid="main"/);
     assert.match(html, /href="https:\/\/ianramospr\.com"/);
-    assert.match(html, new RegExp(`rel="canonical" href="https://chao\\.ianramospr\\.com/${route}"`));
+    assert.match(
+      html,
+      new RegExp(`<link\\b(?=[^>]*rel="canonical")(?=[^>]*href="https://chao\\.ianramospr\\.com/${route}")[^>]*>`),
+    );
     assert.doesNotMatch(html, /<script\b|<style\b|\s(?:on\w+|style)="/i);
     for (const [, value] of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
       if (value.startsWith('#')) {
         assert.ok(html.includes(`id="${value.slice(1)}"`), `${file}: missing anchor ${value}`);
       } else if (value.startsWith('/')) {
+        if (value === '/download') {
+          assert.match(redirects, /^\/download https:\/\/apple\.co\/4ytNjAW 302$/m);
+          continue;
+        }
         const path = value === '/' ? 'index.html' : value.includes('.') ? value.slice(1) : `${value.slice(1)}.html`;
         await access(resolve(root, 'dist/chao', path));
       } else {
@@ -52,12 +60,12 @@ test('Chao routes are separate HTML documents with working local links and ancho
   assert.match(await read('dist/chao/support.html'), /mailto:hello@ianramospr\.com\?subject=Chao%20support/);
 });
 
-test('unconfirmed legal pages disclose pending status rather than claiming a final policy', async () => {
+test('published legal pages include their effective date and contact information', async () => {
   for (const file of ['privacy.html', 'terms.html']) {
     const html = await read(`dist/chao/${file}`);
-    assert.match(html, /pending publication/i);
-    assert.match(html, /name="robots" content="noindex"/);
-    assert.doesNotMatch(html, /we (?:never|do not) collect|governing law|effective date:/i);
+    assert.match(html, /Effective October 11, 2026/i);
+    assert.match(html, /hello@ianramospr\.com/);
+    assert.doesNotMatch(html, /name="robots" content="noindex"/);
   }
 });
 
