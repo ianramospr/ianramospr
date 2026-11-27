@@ -7,8 +7,8 @@ import { test } from 'node:test';
 // Each folder is deployed as-is by its own Cloudflare Pages project.
 const root = fileURLToPath(new URL('../', import.meta.url));
 const sites = {
-  portfolio: { dir: resolve(root, 'portfolio'), pages: ['index', '404'], budget: 60_000 },
-  chao: { dir: resolve(root, 'apps/chao/public'), pages: ['index', 'privacy', 'terms', 'support', '404'], budget: 500_000 },
+  portfolio: { dir: resolve(root, 'portfolio'), url: 'https://ianramospr.com', pages: ['index', '404'], budget: 150_000 },
+  chao: { dir: resolve(root, 'apps/chao/public'), url: 'https://chao.ianramospr.com', pages: ['index', 'privacy', 'terms', 'support', '404'], budget: 500_000 },
 };
 
 const read = (dir, path) => readFile(resolve(dir, path), 'utf8');
@@ -52,7 +52,7 @@ for (const [name, site] of Object.entries(sites)) {
   test(`${name}: home page assets stay under ${site.budget / 1000} KB`, async () => {
     const { links, cssUrls } = await references(site.dir, 'index.html');
     // Assets the page renders with; icons and links to other pages are not counted.
-    const assets = [...links, ...cssUrls].filter((l) => /^[^:]+\.(css|js|svg|png|webp|jpe?g)$/i.test(l)
+    const assets = [...links, ...cssUrls].filter((l) => /^[^:]+\.(css|js|svg|png|webp|jpe?g|woff2)$/i.test(l)
       && !/favicon|apple-touch|android-chrome/.test(l));
     const files = new Set([resolve(site.dir, 'index.html'), ...assets.map((l) => target(site.dir, 'index.html', l))]);
     let total = 0;
@@ -112,5 +112,26 @@ test('deployed folders contain only website files', async () => {
     const files = await readdir(site.dir, { recursive: true });
     const stray = files.filter((f) => /\.(md|mjs|json)$/.test(f));
     assert.deepEqual(stray, [], site.dir);
+  }
+});
+
+// After a deploy: LIVE=1 npm test. Catches Cloudflare settings that source checks cannot see.
+test('live sites serve every page and asset', { skip: !process.env.LIVE }, async () => {
+  const fresh = `?check=${Date.now()}`; // skip Cloudflare's edge cache
+  for (const site of Object.values(sites)) {
+    for (const page of site.pages.filter((p) => p !== '404')) {
+      const path = page === 'index' ? '/' : `/${page}`;
+      const res = await fetch(site.url + path + fresh);
+      assert.equal(res.status, 200, site.url + path);
+      assert.doesNotMatch(await res.text(), /email-protection/, `${site.url + path}: Cloudflare rewrote an email link`);
+      const { links, cssUrls } = await references(site.dir, `${page}.html`);
+      for (const link of [...links, ...cssUrls].filter((l) => /^[^:#]+\.[a-z0-9]+$/i.test(l) && !l.endsWith('.html'))) {
+        const asset = new URL(link, site.url + path).href;
+        assert.equal((await fetch(asset + fresh, { method: 'HEAD' })).status, 200, asset);
+      }
+    }
+    for (const missing of ['/does-not-exist', '/package.json', '/README.md']) {
+      assert.equal((await fetch(site.url + missing + fresh)).status, 404, site.url + missing);
+    }
   }
 });
