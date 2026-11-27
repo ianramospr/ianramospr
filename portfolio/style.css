@@ -16,7 +16,6 @@
   --space-m:   2rem;
   --space-l:   4rem;
   --space-xl:  7rem;
-  --space-2xl: 12rem;
 
   --radius:    4px;
   --max-w:     1100px;
@@ -68,30 +67,15 @@ img {
 }
 
 /* ============================================
-   SCREEN READER ONLY
-   ============================================ */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* ============================================
    SCROLL REVEAL ANIMATION
    ============================================ */
-.reveal {
+.js .reveal {
   opacity: 0;
   translate: 0 24px;
   transition: opacity 0.7s ease, translate 0.7s ease;
 }
 
-.reveal.in-view {
+.js .reveal.in-view {
   opacity: 1;
   translate: 0 0;
 }
@@ -100,10 +84,9 @@ img {
 .delay-2 { transition-delay: 0.2s; }
 .delay-3 { transition-delay: 0.3s; }
 .delay-4 { transition-delay: 0.4s; }
-.delay-5 { transition-delay: 0.5s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .js .reveal {
     opacity: 1;
     translate: 0 0;
     transition: none;
@@ -165,7 +148,6 @@ img {
    HERO
    ============================================ */
 .hero {
-  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -205,29 +187,6 @@ img {
   color: var(--text-muted);
   max-width: 40ch;
   font-weight: 300;
-}
-
-.hero__scroll {
-  display: none;
-  margin-top: var(--space-xl);
-  width: 1px;
-  height: 64px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero__scroll-line {
-  display: block;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--accent), transparent);
-  animation: scrollLine 1.8s ease-in-out infinite;
-}
-
-@keyframes scrollLine {
-  0%   { transform: translateY(-100%); opacity: 0; }
-  30%  { opacity: 1; }
-  100% { transform: translateY(100%); opacity: 0; }
 }
 
 /* ============================================
@@ -372,7 +331,6 @@ img {
   :root {
     --space-l: 2.5rem;
     --space-xl: 4rem;
-    --space-2xl: 7rem;
   }
 
   .nav {
@@ -380,8 +338,6 @@ img {
   }
 
   .hero {
-    display: flex;
-    min-height: auto;
     justify-content: flex-start;
     padding: 8.5rem var(--space-s) var(--space-xl);
   }
@@ -393,16 +349,8 @@ img {
     max-width: 9.5ch;
   }
 
-  .hero__eyebrow {
-    margin-bottom: var(--space-s);
-  }
-
   .hero__sub {
     max-width: 32ch;
-  }
-
-  .hero__scroll {
-    display: none;
   }
 
   .section {
@@ -413,14 +361,6 @@ img {
   .section__label {
     margin-bottom: var(--space-l);
     padding-top: 0;
-  }
-
-  .skills__list {
-    margin: 0;
-  }
-
-  .contact__body {
-    margin: 0;
   }
 
   .footer {
